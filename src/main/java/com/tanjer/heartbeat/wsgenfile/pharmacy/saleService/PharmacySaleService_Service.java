@@ -1,4 +1,4 @@
-package com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice;
+package com.tanjer.heartbeat.wsgenfile.pharmacy.saleService;
 
 import java.net.MalformedURLException;
 import java.net.URL;

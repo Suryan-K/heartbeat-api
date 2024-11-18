@@ -1,5 +1,5 @@
 
-package com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice;
+package com.tanjer.heartbeat.wsgenfile.pharmacy.saleService;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
