@@ -1,4 +1,4 @@
-package com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice;
+package com.tanjer.heartbeat.wsgenfile.pharmacy.saleService;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

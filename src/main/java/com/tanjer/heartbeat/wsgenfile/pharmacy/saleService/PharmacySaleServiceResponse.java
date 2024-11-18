@@ -1,5 +1,5 @@
 
-package com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice;
+package com.tanjer.heartbeat.wsgenfile.pharmacy.saleService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,5 @@
 
-package com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice;
+package com.tanjer.heartbeat.wsgenfile.pharmacy.saleService;
 
 import javax.xml.ws.WebFault;
 
@@ -14,7 +14,7 @@ import javax.xml.ws.WebFault;
 @WebFault(name = "ServiceError", targetNamespace = "http://dtts.sfda.gov.sa/PharmacySaleService")
 public class ServiceError extends Exception {
 
-    private com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice.FaultBean faultInfo;
+    private com.tanjer.heartbeat.wsgenfile.pharmacy.saleService.FaultBean faultInfo;
 
     public ServiceError() {
         super();
@@ -28,17 +28,17 @@ public class ServiceError extends Exception {
         super(message, cause);
     }
 
-    public ServiceError(String message, com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice.FaultBean serviceError) {
+    public ServiceError(String message, com.tanjer.heartbeat.wsgenfile.pharmacy.saleService.FaultBean serviceError) {
         super(message);
         this.faultInfo = serviceError;
     }
 
-    public ServiceError(String message, com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice.FaultBean serviceError, java.lang.Throwable cause) {
+    public ServiceError(String message, com.tanjer.heartbeat.wsgenfile.pharmacy.saleService.FaultBean serviceError, java.lang.Throwable cause) {
         super(message, cause);
         this.faultInfo = serviceError;
     }
 
-    public com.tanjer.heartbeat.wsgenfile.pharmacy.saleservice.FaultBean getFaultInfo() {
+    public com.tanjer.heartbeat.wsgenfile.pharmacy.saleService.FaultBean getFaultInfo() {
         return this.faultInfo;
     }
 }
