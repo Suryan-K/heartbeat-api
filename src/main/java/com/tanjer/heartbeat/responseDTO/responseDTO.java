@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @AllArgsConstructor
-public class responseDTO {
+public class ResponseDTO {
 	
 	private boolean status;
 	private String message;

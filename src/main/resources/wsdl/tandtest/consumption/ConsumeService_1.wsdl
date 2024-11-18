@@ -1,0 +1,43 @@
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://dtts.sfda.gov.sa/ConsumeService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://dtts.sfda.gov.sa/ConsumeService" name="ConsumeService">
+<types>
+<xsd:schema>
+<xsd:import namespace="http://dtts.sfda.gov.sa/ConsumeService" schemaLocation="https://tandttest.sfda.gov.sa/ws/ConsumeService/ConsumeService?xsd=1"/>
+</xsd:schema>
+</types>
+<message name="notifyConsume">
+<part name="ConsumeServiceRequest" element="tns:ConsumeServiceRequest"/>
+</message>
+<message name="notifyConsumeResponse">
+<part name="ConsumeServiceResponse" element="tns:ConsumeServiceResponse"/>
+</message>
+<message name="ServiceError">
+<part name="fault" element="tns:ServiceError"/>
+</message>
+<portType name="ConsumeService">
+<operation name="notifyConsume">
+<input wsam:Action="https://tandttest.sfda.gov.sa/ws/ConsumeService/ConsumeService/notifyConsumeRequest" message="tns:notifyConsume"/>
+<output wsam:Action="https://tandttest.sfda.gov.sa/ws/ConsumeService/ConsumeService/notifyConsumeResponse" message="tns:notifyConsumeResponse"/>
+<fault message="tns:ServiceError" name="ServiceError" wsam:Action="https://tandttest.sfda.gov.sa/ws/ConsumeService/ConsumeService/notifyConsume/Fault/ServiceError"/>
+</operation>
+</portType>
+<binding name="ConsumeServiceBinding" type="tns:ConsumeService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="notifyConsume">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="ServiceError">
+<soap:fault name="ServiceError" use="literal"/>
+</fault>
+</operation>
+</binding>
+<service name="ConsumeService">
+<port name="ConsumeService" binding="tns:ConsumeServiceBinding">
+<soap:address location="https://tandttest.sfda.gov.sa/ws/ConsumeService/ConsumeService"/>
+</port>
+</service>
+</definitions>
