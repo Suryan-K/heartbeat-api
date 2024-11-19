@@ -1,0 +1,71 @@
+spring:
+  profiles:
+    active: local
+
+app:
+  name: heartbeat
+  version: 1.2.0
+
+
+# Local profile-specific properties
+---
+spring:
+  profiles: local
+
+server:
+  port: 8080
+  #address: 127.0.0.1
+
+# Database settings for local environment
+datasource:
+  #url: jdbc:mysql://localhost:3306/local_db
+  #username: root
+  #password: rootpassword
+integration:
+   rsd:
+      url: https://tandttest.sfda.gov.sa/ws
+      username: 68251830000010000
+      password: CMRC@1234
+
+logging:
+  level:
+    root: DEBUG
+
+# Stage profile-specific properties
+---
+spring:
+  profiles: stage
+
+server:
+  port: 8081
+  #address: 0.0.0.0
+
+# Database settings for staging environment
+datasource:
+  #url: jdbc:mysql://stage-db.example.com:3306/stage_db
+  #username: stageuser
+  #password: stagepassword
+
+logging:
+  level:
+    root: INFO
+
+
+# Production profile-specific properties
+---
+spring:
+  profiles: prod
+
+server:
+  port: 8082
+  #address: 0.0.0.0
+
+# Database settings for production environment
+datasource:
+  #url: jdbc:mysql://prod-db.example.com:3306/prod_db
+  #username: produser
+  #password: prodpassword
+
+logging:
+  level:
+    root: WARN
