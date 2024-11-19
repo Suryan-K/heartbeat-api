@@ -49,6 +49,7 @@ public class PharmacyController {
 		return pharmacyService.getSaleCancelService(request);
 	}
 	
+	@PostMapping("/deactivation")
 	public DeactivationServiceResponse deactivationServiceResponse(@RequestBody DeactivationServiceRequestDTO request) {
 		return pharmacyService.getDeactivationService(request);
 	}
