@@ -28,22 +28,22 @@ public class CunsumptionSoapClientConfig {
 
 
 	@Bean
-	public ConsumeService consumeService() {
+	protected ConsumeService consumeService() {
 		return createSoapClient(ConsumeService.class, rsdUrl+"/ConsumeService/ConsumeService");
 	}
 	
 	@Bean
-	public ConsumeCancelService consumeCancelService() {
+	protected ConsumeCancelService consumeCancelService() {
 		return createSoapClient(ConsumeCancelService.class, rsdUrl+"/ConsumeCancelService/ConsumeCancelService");
 	}
 	
 	@Bean
-	public DeactivationService cunsumptionDeactivationService() {
+	protected DeactivationService cunsumptionDeactivationService() {
 		return createSoapClient(DeactivationService.class, rsdUrl+"/DeactivationService/DeactivationService");
 	}
 	
 	@Bean
-	public DeactivationCancelService deactivationCancelService() {
+	protected DeactivationCancelService deactivationCancelService() {
 		return createSoapClient(DeactivationCancelService.class, rsdUrl+"/DeactivationCancelService/DeactivationCancelService");
 	}
 	

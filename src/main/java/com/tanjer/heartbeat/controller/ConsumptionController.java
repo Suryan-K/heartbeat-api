@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tanjer.heartbeat.requestDTO.DeactivationCancelServiceRequestDTO;
 import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
 import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
 import com.tanjer.heartbeat.service.ConsumeSaleService;
@@ -39,7 +38,7 @@ public class ConsumptionController {
 	}
 	
 	@PostMapping("deactivation/cancel")
-	public DeactivationCancelServiceResponse request(@RequestBody DeactivationCancelServiceRequestDTO request){
+	public DeactivationCancelServiceResponse customtiondeactivationCancelService(@RequestBody ListProductModelDTO request){
 		return consumeService.deactivateCancelServiceRes(request);
 	}
 

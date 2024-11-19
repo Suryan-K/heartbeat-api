@@ -43,17 +43,17 @@ public class PharmacySoapClientConfig {
 	}
 	
 	@Bean
-	public DeactivationService deactivationService() {
+	protected DeactivationService deactivationService() {
 		return createSoapClient(DeactivationService.class, rsdUrl+"/DeactivationService/DeactivationService");
 	}
 	
 	@Bean
-	public DeactivationCancelService pharmacyDeactivationCancelService() {
+	protected DeactivationCancelService pharmacyDeactivationCancelService() {
 		return createSoapClient(DeactivationCancelService.class, rsdUrl+"/DeactivationCancelService/DeactivationCancelService");
 	}
 	
 	@Bean
-	public PharmacySaleCancelService pharmacySaleCancelService() {
+	protected PharmacySaleCancelService pharmacySaleCancelService() {
 		return createSoapClient(PharmacySaleCancelService.class, rsdUrl+"/PharmacySaleCancelService/PharmacySaleCancelService");
 	}
 	
