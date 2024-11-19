@@ -27,9 +27,6 @@ integration:
       username: 68251830000010000
       password: CMRC@1234
 
-logging:
-  level:
-    root: DEBUG
 
 # Stage profile-specific properties
 ---
@@ -45,10 +42,11 @@ datasource:
   #url: jdbc:mysql://stage-db.example.com:3306/stage_db
   #username: stageuser
   #password: stagepassword
-
-logging:
-  level:
-    root: INFO
+integration:
+   rsd:
+      url: https://tandttest.sfda.gov.sa/ws
+      username: 68251830000010000
+      password: CMRC@1234
 
 
 # Production profile-specific properties
@@ -65,7 +63,3 @@ datasource:
   #url: jdbc:mysql://prod-db.example.com:3306/prod_db
   #username: produser
   #password: prodpassword
-
-logging:
-  level:
-    root: WARN

@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationService.DeactivationService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleCancelService.PharmacySaleCancelService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleService;
 
 @Configuration
@@ -26,23 +28,33 @@ public class SoapClientConfig {
 	private String rsdPassword;
 
 	@Bean
-	public PharmacySaleService pharmacySaleService() {
+	protected PharmacySaleService pharmacySaleService() {
 		return createSoapClient(PharmacySaleService.class, rsdUrl + "/PharmacySaleService/PharmacySaleService");
 	}
 
 	@Bean
-	public AcceptService acceptService() {
+	protected AcceptService acceptService() {
 		return createSoapClient(AcceptService.class, rsdUrl + "/AcceptService/AcceptService");
 	}
 
 	@Bean
-	public AcceptDispatchService acceptDispatchService() {
+	protected AcceptDispatchService acceptDispatchService() {
 		return createSoapClient(AcceptDispatchService.class, rsdUrl + "/AcceptDispatchService/AcceptDispatchService");
 	}
 
 	@Bean
-	public ConsumeService consumeService() {
+	protected ConsumeService consumeService() {
 		return createSoapClient(ConsumeService.class, rsdUrl+"/ConsumeService/ConsumeService");
+	}
+	
+	@Bean
+	protected PharmacySaleCancelService phamacySaleCancelService() {
+		return createSoapClient(PharmacySaleCancelService.class, rsdUrl+"/PharmacySaleCancelService/PharmacySaleCancelService");
+	}
+	
+	@Bean
+	protected DeactivationService deactivationSaleService() {
+		return createSoapClient(DeactivationService.class, rsdUrl+"/DeactivationService/DeactivationService");
 	}
 
 	@SuppressWarnings("unchecked")

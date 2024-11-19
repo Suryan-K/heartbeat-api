@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
 import com.tanjer.heartbeat.service.ConsumeSaleService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceRequest;
@@ -33,7 +33,7 @@ public class ConsumeServiceImpl implements ConsumeSaleService{
 	private ConsumeService consumeService;
 	
 	@Override
-	public ConsumeServiceResponse consumeServiceRes(ConsumeServiceRequestDTO dto) {
+	public ConsumeServiceResponse consumeServiceRes(ListProductModelDTO dto) {
 
 		ConsumeServiceRequest request = mapToSoapRequest(dto);
 		ConsumeServiceResponse response = null;
@@ -45,7 +45,7 @@ public class ConsumeServiceImpl implements ConsumeSaleService{
 			return response;
 	}
 	
-	private ConsumeServiceRequest mapToSoapRequest(ConsumeServiceRequestDTO dto) {
+	private ConsumeServiceRequest mapToSoapRequest(ListProductModelDTO dto) {
 		ConsumeServiceRequest request = new ConsumeServiceRequest();
 		ConsumeServiceRequest.PRODUCTLIST productlist = new ConsumeServiceRequest.PRODUCTLIST();
 		List<Product> products = dto.getProductlist().stream().map(productDto -> {

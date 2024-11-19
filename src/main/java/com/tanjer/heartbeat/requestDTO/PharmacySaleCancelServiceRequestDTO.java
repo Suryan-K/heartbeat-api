@@ -4,16 +4,15 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class AcceptServiceRequestDto {
+public class PharmacySaleCancelServiceRequestDTO {
 	
-	private String fromgln;
-	private List<ProductModel> productlist;
+	private String togln;
+	private String prescriptionId;
+	List<ProductModel> productlist;
 
 }

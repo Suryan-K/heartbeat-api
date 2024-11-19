@@ -1,0 +1,43 @@
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://dtts.sfda.gov.sa/PharmacySaleCancelService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://dtts.sfda.gov.sa/PharmacySaleCancelService" name="PharmacySaleCancelService">
+<types>
+<xsd:schema>
+<xsd:import namespace="http://dtts.sfda.gov.sa/PharmacySaleCancelService" schemaLocation="https://tandttest.sfda.gov.sa/ws/PharmacySaleCancelService/PharmacySaleCancelService?xsd=1"/>
+</xsd:schema>
+</types>
+<message name="notifyPharmacySaleCancel">
+<part name="PharmacySaleCancelServiceRequest" element="tns:PharmacySaleCancelServiceRequest"/>
+</message>
+<message name="notifyPharmacySaleCancelResponse">
+<part name="PharmacySaleCancelServiceResponse" element="tns:PharmacySaleCancelServiceResponse"/>
+</message>
+<message name="ServiceError">
+<part name="fault" element="tns:ServiceError"/>
+</message>
+<portType name="PharmacySaleCancelService">
+<operation name="notifyPharmacySaleCancel">
+<input wsam:Action="https://tandttest.sfda.gov.sa/ws/PharmacySaleCancelService/PharmacySaleCancelService/notifyPharmacySaleCancelRequest" message="tns:notifyPharmacySaleCancel"/>
+<output wsam:Action="https://tandttest.sfda.gov.sa/ws/PharmacySaleCancelService/PharmacySaleCancelService/notifyPharmacySaleCancelResponse" message="tns:notifyPharmacySaleCancelResponse"/>
+<fault message="tns:ServiceError" name="ServiceError" wsam:Action="https://tandttest.sfda.gov.sa/ws/PharmacySaleCancelService/PharmacySaleCancelService/notifyPharmacySaleCancel/Fault/ServiceError"/>
+</operation>
+</portType>
+<binding name="PharmacySaleCancelServiceBinding" type="tns:PharmacySaleCancelService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="notifyPharmacySaleCancel">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="ServiceError">
+<soap:fault name="ServiceError" use="literal"/>
+</fault>
+</operation>
+</binding>
+<service name="PharmacySaleCancelService">
+<port name="PharmacySaleCancelService" binding="tns:PharmacySaleCancelServiceBinding">
+<soap:address location="https://tandttest.sfda.gov.sa/ws/PharmacySaleCancelService/PharmacySaleCancelService"/>
+</port>
+</service>
+</definitions>
