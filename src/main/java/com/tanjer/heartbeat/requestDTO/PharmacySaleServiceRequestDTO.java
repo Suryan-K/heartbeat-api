@@ -19,7 +19,7 @@ public class PharmacySaleServiceRequestDTO {
 	    private String patientnationalid;
 	    private String prescriptionid;
 	    private String prescriptiondate;
-	    private List<ProductSample> productlist;
+	    private List<ProductModel> productlist;
 		
 	    
 }

@@ -12,8 +12,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConsumeServiceRequestDTO {
+public class ListProductModelDTO {
 	
-	private List<ProductSample> productlist;
+	private List<ProductModel> productlist;
 
 }
