@@ -11,32 +11,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tanjer.heartbeat.requestDTO.AcceptServiceRequestDto;
+import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.PharmacySaleCancelServiceRequestDTO;
 import com.tanjer.heartbeat.requestDTO.PharmacySaleServiceRequestDTO;
 import com.tanjer.heartbeat.service.PharmacyService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationService.DeactivationServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleCancelService.PharmacySaleCancelServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleServiceResponse;
 
 @RestController
-@RequestMapping("/pharmacy/service")
+@RequestMapping("pharmacy/service")
 public class PharmacyController {
 
 	@Autowired
 	private PharmacyService pharmacyService;
 
-	@PostMapping("/sales")
+	@PostMapping("sale")
 	public PharmacySaleServiceResponse saleService(@RequestBody final PharmacySaleServiceRequestDTO request) {
 		return pharmacyService.pharmacyServiceRes(request);
 	}
 
-	@PostMapping("/accept")
+	@PostMapping("accept")
 	public AcceptServiceResponse acceptService(@RequestBody final AcceptServiceRequestDto request) {
 		return pharmacyService.getAcceptService(request);
 	}
 
-	@GetMapping("/dispatch/{dispatchNotificationId}")
+	@GetMapping("dispatch/{dispatchNotificationId}")
 	public AcceptDispatchServiceResponse acceptDispatchServiceResponse(
 			@PathVariable(required = true) final String dispatchNotificationId) {
 		return pharmacyService.getAcceptDispatchService(dispatchNotificationId);
+	}
+	
+	@PostMapping("sale/cancel")
+	public PharmacySaleCancelServiceResponse saleCancelServiceResponse(@RequestBody PharmacySaleCancelServiceRequestDTO request) {
+		return pharmacyService.getSaleCancelService(request);
+	}
+	
+	@PostMapping("/deactivation")
+	public DeactivationServiceResponse deactivationServiceResponse(@RequestBody DeactivationServiceRequestDTO request) {
+		return pharmacyService.getDeactivationService(request);
 	}
 }

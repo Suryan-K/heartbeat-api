@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-public class ProductSample {
+public class ProductModel {
 	
 	private String gtin;
 	private String sn;

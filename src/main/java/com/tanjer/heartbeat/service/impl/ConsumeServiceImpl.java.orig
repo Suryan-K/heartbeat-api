@@ -1,22 +1,33 @@
 package com.tanjer.heartbeat.service.impl;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tanjer.heartbeat.requestDTO.ConsumeCancelServiceRequestDTO;
 import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
-import com.tanjer.heartbeat.requestDTO.DeactivationCancelServiceRequestDTO;
-import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
 import com.tanjer.heartbeat.service.ConsumeSaleService;
+<<<<<<< HEAD
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice.ConsumeCancelServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice.HConsumeCancelService;
+=======
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceRequest;
+>>>>>>> master
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.HConsumeService;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationcancelservice.DeactivationCancelServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationcancelservice.HDeactivationCancelService;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationservice.DeactivationServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationservice.HDeactivationService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.Product;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ServiceError;
 
 
 @Service
@@ -25,6 +36,7 @@ public class ConsumeServiceImpl implements ConsumeSaleService{
 	private static final Logger logger = LoggerFactory.getLogger(ConsumeServiceImpl.class);
 	
 	@Autowired
+<<<<<<< HEAD
 	private HConsumeService hConsumeService;
 	
 	@Autowired
@@ -35,12 +47,21 @@ public class ConsumeServiceImpl implements ConsumeSaleService{
 	
 	@Autowired
 	private HDeactivationCancelService hDeactivationCancelService;
+=======
+	private ConsumeService consumeService;
+>>>>>>> master
 	
 	@Override
 	public ConsumeServiceResponse consumeServiceRes(ConsumeServiceRequestDTO dto) {
-		logger.info("consumeServiceRes Processing started");
-		ConsumeServiceResponse response = hConsumeService.consumeServiceThirdParyCall(dto);
-		return response;
+
+		ConsumeServiceRequest request = mapToSoapRequest(dto);
+		ConsumeServiceResponse response = null;
+		try {
+			response =  consumeService.notifyConsume(request);
+		} catch (ServiceError e) {
+			e.printStackTrace();
+		}
+			return response;
 	}
 	
 	@Override
@@ -57,10 +78,18 @@ public class ConsumeServiceImpl implements ConsumeSaleService{
 		return response;
 	}
 
-	@Override
-	public DeactivationCancelServiceResponse deactivateCancelServiceRes(DeactivationCancelServiceRequestDTO dto) {
-		logger.info("deactivateCancelServiceRes Processing started");
-		DeactivationCancelServiceResponse response = hDeactivationCancelService.deactivationCancelServiceThirdParyCall(dto);
-		return response;
+		return request;
+		
+	}
+	public XMLGregorianCalendar convertToXMLGregorianCalendar(String dateStr) {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = sdf.parse(dateStr);
+			GregorianCalendar gregorianCalendar = new GregorianCalendar();
+			gregorianCalendar.setTime(date);
+			return DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar);
+		} catch (Exception e) {
+			throw new RuntimeException("Error converting date: " + e.getMessage(), e);
+		}
 	}
 }

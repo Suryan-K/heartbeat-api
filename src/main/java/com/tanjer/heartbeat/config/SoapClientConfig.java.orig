@@ -46,11 +46,12 @@ public class SoapClientConfig {
 	}
 
 	@Bean
-	public ConsumeService consumeService() {
+	protected ConsumeService consumeService() {
 		return createSoapClient(ConsumeService.class, rsdUrl+"/ConsumeService/ConsumeService");
 	}
 	
 	@Bean
+<<<<<<< HEAD
 	public ConsumeCancelService consumeCancelService() {
 		return createSoapClient(ConsumeCancelService.class, rsdUrl+"/ConsumeCancelService/ConsumeCancelService");
 	}
@@ -64,6 +65,16 @@ public class SoapClientConfig {
 	public DeactivationCancelService deactivationCancelService() {
 		return createSoapClient(DeactivationCancelService.class, rsdUrl+"/DeactivationCancelService/DeactivationCancelService");
 	}
+=======
+	protected PharmacySaleCancelService phamacySaleCancelService() {
+		return createSoapClient(PharmacySaleCancelService.class, rsdUrl+"/PharmacySaleCancelService/PharmacySaleCancelService");
+	}
+	
+	@Bean
+	protected DeactivationService deactivationSaleService() {
+		return createSoapClient(DeactivationService.class, rsdUrl+"/DeactivationService/DeactivationService");
+	}
+>>>>>>> master
 
 	@SuppressWarnings("unchecked")
 	private <T> T createSoapClient(Class<T> serviceClass, String serviceUrl) {
