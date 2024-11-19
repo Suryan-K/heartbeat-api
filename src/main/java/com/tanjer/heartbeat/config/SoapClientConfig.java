@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice.ConsumeCancelService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationcancelservice.DeactivationCancelService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationservice.DeactivationService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleService;
@@ -43,6 +46,21 @@ public class SoapClientConfig {
 	@Bean
 	public ConsumeService consumeService() {
 		return createSoapClient(ConsumeService.class, rsdUrl+"/ConsumeService/ConsumeService");
+	}
+	
+	@Bean
+	public ConsumeCancelService consumeCancelService() {
+		return createSoapClient(ConsumeCancelService.class, rsdUrl+"/ConsumeCancelService/ConsumeCancelService");
+	}
+	
+	@Bean
+	public DeactivationService deactivationService() {
+		return createSoapClient(DeactivationService.class, rsdUrl+"/DeactivationService/DeactivationService");
+	}
+	
+	@Bean
+	public DeactivationCancelService deactivationCancelService() {
+		return createSoapClient(DeactivationCancelService.class, rsdUrl+"/DeactivationCancelService/DeactivationCancelService");
 	}
 
 	@SuppressWarnings("unchecked")

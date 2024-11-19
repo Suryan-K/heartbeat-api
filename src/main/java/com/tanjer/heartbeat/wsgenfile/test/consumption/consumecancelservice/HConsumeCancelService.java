@@ -1,4 +1,4 @@
-package com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice;
+package com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,37 +10,36 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.ConsumeCancelServiceRequestDTO;
 import com.tanjer.heartbeat.utils.CommonUtils;
 
 @Component
-public class HConsumeService {
-	
-	private static final Logger logger = LoggerFactory.getLogger(HConsumeService.class);
+public class HConsumeCancelService {
 	
 	@Autowired
-	private ConsumeService consumeService;
+	private ConsumeCancelService consumeCancelService;
 	
 	@Autowired
 	private CommonUtils commonUtils;
 	
-	public ConsumeServiceResponse consumeServiceThirdParyCall(ConsumeServiceRequestDTO dto) {
-		logger.info("ConsumeServiceRequest Processing started");
-		ConsumeServiceRequest request = mapToSoapRequest(dto);
+	private static final Logger logger = LoggerFactory.getLogger(HConsumeCancelService.class);
+
+	public ConsumeCancelServiceResponse consumeCancelServiceThirdParyCall(ConsumeCancelServiceRequestDTO dto) {
+		logger.info("ConusmeCancelServiceRequest Processing started");
+		ConsumeCancelServiceRequest request = mapToSoapRequest(dto);
 		
 		try {
-			ConsumeServiceResponse responce = consumeService.notifyConsume(request);
+			ConsumeCancelServiceResponse responce = consumeCancelService.notifyConsumeCancel(request);
 			return responce;
 		} catch (ServiceError e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-
-
-	private ConsumeServiceRequest mapToSoapRequest(ConsumeServiceRequestDTO dto) {
-		ConsumeServiceRequest request = new ConsumeServiceRequest();
-		ConsumeServiceRequest.PRODUCTLIST productlist = new ConsumeServiceRequest.PRODUCTLIST();
+	
+	private ConsumeCancelServiceRequest mapToSoapRequest(ConsumeCancelServiceRequestDTO dto) {
+		ConsumeCancelServiceRequest request = new ConsumeCancelServiceRequest();
+		ConsumeCancelServiceRequest.PRODUCTLIST productlist = new ConsumeCancelServiceRequest.PRODUCTLIST();
 		List<Product> products = dto.getProductlist().stream().map(productDto -> {
 			Product product = new Product();
 			product.setGTIN(productDto.getGtin());
@@ -67,4 +66,6 @@ public class HConsumeService {
 		
 	}
 	
+	
+
 }

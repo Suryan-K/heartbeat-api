@@ -27,7 +27,7 @@ public class HDeactivationCancelService {
 	public DeactivationCancelServiceResponse deactivationCancelServiceThirdParyCall(DeactivationCancelServiceRequestDTO dto) {
 		
 
-		logger.info("DeactivationServiceRequest Processing started");
+		logger.info("DeactivationCancelServiceRequest Processing started");
 		DeactivationCancelServiceRequest request = mapToSoapRequest(dto);
 		
 		try {
