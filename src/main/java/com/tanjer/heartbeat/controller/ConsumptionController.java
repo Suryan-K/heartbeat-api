@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
 import com.tanjer.heartbeat.service.ConsumeSaleService;
-import com.tanjer.heartbeat.wsgenfile.consumption.consumeservice.ConsumeServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceResponse;
 
 @RestController
 public class ConsumptionController {

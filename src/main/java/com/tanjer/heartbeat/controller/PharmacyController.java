@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tanjer.heartbeat.requestDTO.AcceptServiceRequestDto;
 import com.tanjer.heartbeat.requestDTO.PharmacySaleServiceRequestDTO;
 import com.tanjer.heartbeat.service.PharmacyService;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.acceptDispatch.AcceptDispatchServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.acceptService.AcceptServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.saleService.PharmacySaleServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleServiceResponse;
 
 @RestController
 @RequestMapping("/pharmacy/service")
@@ -27,7 +27,6 @@ public class PharmacyController {
 	@PostMapping("/sales")
 	public PharmacySaleServiceResponse saleService(@RequestBody final PharmacySaleServiceRequestDTO request) {
 		return pharmacyService.pharmacyServiceRes(request);
-
 	}
 
 	@PostMapping("/accept")

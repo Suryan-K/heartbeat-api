@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.tanjer.heartbeat.wsgenfile.consumption.consumeservice.ConsumeService;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.acceptDispatch.AcceptDispatchService;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.acceptService.AcceptService;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.saleService.PharmacySaleService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleService;
 
 @Configuration
 public class SoapClientConfig {

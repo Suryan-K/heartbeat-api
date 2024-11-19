@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
 
 import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
 import com.tanjer.heartbeat.service.ConsumeSaleService;
-import com.tanjer.heartbeat.wsgenfile.consumption.consumeservice.ConsumeService;
-import com.tanjer.heartbeat.wsgenfile.consumption.consumeservice.ConsumeServiceRequest;
-import com.tanjer.heartbeat.wsgenfile.consumption.consumeservice.ConsumeServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.consumption.consumeservice.Product;
-import com.tanjer.heartbeat.wsgenfile.consumption.consumeservice.ServiceError;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceRequest;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.Product;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ServiceError;
 
 
 @Service

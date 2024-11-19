@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import com.tanjer.heartbeat.requestDTO.AcceptServiceRequestDto;
 import com.tanjer.heartbeat.requestDTO.PharmacySaleServiceRequestDTO;
 import com.tanjer.heartbeat.service.PharmacyService;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.acceptDispatch.AcceptDispatchServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.acceptDispatch.HAcceptDispatchService;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.acceptService.AcceptServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.acceptService.HAcceptService;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.saleService.HPharmacySalesService;
-import com.tanjer.heartbeat.wsgenfile.pharmacy.saleService.PharmacySaleServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.HAcceptDispatchService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.HAcceptService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.HPharmacySalesService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleServiceResponse;
 
 @Service
 public class PharmacyServiceImpl implements PharmacyService {
