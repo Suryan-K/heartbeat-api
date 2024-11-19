@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
 import com.tanjer.heartbeat.utils.CommonUtils;
 
 @Component
@@ -24,7 +24,7 @@ public class HConsumeService {
 	@Autowired
 	private CommonUtils commonUtils;
 	
-	public ConsumeServiceResponse consumeServiceThirdParyCall(ConsumeServiceRequestDTO dto) {
+	public ConsumeServiceResponse consumeServiceThirdParyCall(ListProductModelDTO dto) {
 		logger.info("ConsumeServiceRequest Processing started");
 		ConsumeServiceRequest request = mapToSoapRequest(dto);
 		
@@ -38,7 +38,7 @@ public class HConsumeService {
 	}
 
 
-	private ConsumeServiceRequest mapToSoapRequest(ConsumeServiceRequestDTO dto) {
+	private ConsumeServiceRequest mapToSoapRequest(ListProductModelDTO dto) {
 		ConsumeServiceRequest request = new ConsumeServiceRequest();
 		ConsumeServiceRequest.PRODUCTLIST productlist = new ConsumeServiceRequest.PRODUCTLIST();
 		List<Product> products = dto.getProductlist().stream().map(productDto -> {

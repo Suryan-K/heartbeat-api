@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.tanjer.heartbeat.requestDTO.ConsumeCancelServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
 import com.tanjer.heartbeat.utils.CommonUtils;
 
 @Component
@@ -24,7 +24,7 @@ public class HConsumeCancelService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HConsumeCancelService.class);
 
-	public ConsumeCancelServiceResponse consumeCancelServiceThirdParyCall(ConsumeCancelServiceRequestDTO dto) {
+	public ConsumeCancelServiceResponse consumeCancelServiceThirdParyCall(ListProductModelDTO dto) {
 		logger.info("ConusmeCancelServiceRequest Processing started");
 		ConsumeCancelServiceRequest request = mapToSoapRequest(dto);
 		
@@ -37,7 +37,7 @@ public class HConsumeCancelService {
 		}
 	}
 	
-	private ConsumeCancelServiceRequest mapToSoapRequest(ConsumeCancelServiceRequestDTO dto) {
+	private ConsumeCancelServiceRequest mapToSoapRequest(ListProductModelDTO dto) {
 		ConsumeCancelServiceRequest request = new ConsumeCancelServiceRequest();
 		ConsumeCancelServiceRequest.PRODUCTLIST productlist = new ConsumeCancelServiceRequest.PRODUCTLIST();
 		List<Product> products = dto.getProductlist().stream().map(productDto -> {

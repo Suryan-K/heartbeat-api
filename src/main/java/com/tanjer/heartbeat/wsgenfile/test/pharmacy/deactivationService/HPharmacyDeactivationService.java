@@ -12,7 +12,7 @@ import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
 import com.tanjer.heartbeat.utils.CommonUtils;
 
 @Component
-public class HDeactivationService {
+public class HPharmacyDeactivationService {
 	
 	@Autowired
 	private CommonUtils commonUtils;

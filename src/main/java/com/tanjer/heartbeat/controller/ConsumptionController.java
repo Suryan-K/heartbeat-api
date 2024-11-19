@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tanjer.heartbeat.requestDTO.ConsumeCancelServiceRequestDTO;
-import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
 import com.tanjer.heartbeat.requestDTO.DeactivationCancelServiceRequestDTO;
 import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
 import com.tanjer.heartbeat.service.ConsumeSaleService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice.ConsumeCancelServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceResponse;
@@ -25,12 +24,12 @@ public class ConsumptionController {
 	private ConsumeSaleService consumeService;
 	
 	@PostMapping("consume")
-	public ConsumeServiceResponse request(@RequestBody ConsumeServiceRequestDTO request){
+	public ConsumeServiceResponse requestfild(@RequestBody ListProductModelDTO request){
 		return consumeService.consumeServiceRes(request);
 	}
 	
 	@PostMapping("consume/cancel")
-	public ConsumeCancelServiceResponse request(@RequestBody ConsumeCancelServiceRequestDTO request){
+	public ConsumeCancelServiceResponse request(@RequestBody ListProductModelDTO request){
 		return consumeService.consumeCancelServiceRes(request);
 	}
 	

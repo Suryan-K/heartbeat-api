@@ -15,7 +15,7 @@ import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.HAcceptDispat
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.HAcceptService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationService.DeactivationServiceResponse;
-import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationService.HDeactivationService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationService.HPharmacyDeactivationService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleCancelService.HPharmacySaleCancelService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleCancelService.PharmacySaleCancelServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.HPharmacySalesService;
@@ -39,7 +39,7 @@ public class PharmacyServiceImpl implements PharmacyService {
 	private HPharmacySaleCancelService pharmacyCancelSaleService;
 	
 	@Autowired
-	private HDeactivationService deactivationSaleService;
+	private HPharmacyDeactivationService deactivationSaleService;
 
 	@Override
 	public PharmacySaleServiceResponse pharmacyServiceRes(PharmacySaleServiceRequestDTO dto) {

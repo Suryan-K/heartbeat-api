@@ -8,19 +8,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice.ConsumeCancelService;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationcancelservice.DeactivationCancelService;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationservice.DeactivationService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptService;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationCancelService.DeactivationCancelService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationService.DeactivationService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleCancelService.PharmacySaleCancelService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleService;
 
 @Configuration
-public class SoapClientConfig {
-
+public class PharmacySoapClientConfig {
+	
 	@Value("${integration.rsd.url}")
 	private String rsdUrl;
 
@@ -29,7 +26,7 @@ public class SoapClientConfig {
 
 	@Value("${integration.rsd.password}")
 	private String rsdPassword;
-
+	
 	@Bean
 	protected PharmacySaleService pharmacySaleService() {
 		return createSoapClient(PharmacySaleService.class, rsdUrl + "/PharmacySaleService/PharmacySaleService");
@@ -44,16 +41,6 @@ public class SoapClientConfig {
 	protected AcceptDispatchService acceptDispatchService() {
 		return createSoapClient(AcceptDispatchService.class, rsdUrl + "/AcceptDispatchService/AcceptDispatchService");
 	}
-
-	@Bean
-	public ConsumeService consumeService() {
-		return createSoapClient(ConsumeService.class, rsdUrl+"/ConsumeService/ConsumeService");
-	}
-	
-	@Bean
-	public ConsumeCancelService consumeCancelService() {
-		return createSoapClient(ConsumeCancelService.class, rsdUrl+"/ConsumeCancelService/ConsumeCancelService");
-	}
 	
 	@Bean
 	public DeactivationService deactivationService() {
@@ -61,10 +48,15 @@ public class SoapClientConfig {
 	}
 	
 	@Bean
-	public DeactivationCancelService deactivationCancelService() {
+	public DeactivationCancelService pharmacyDeactivationCancelService() {
 		return createSoapClient(DeactivationCancelService.class, rsdUrl+"/DeactivationCancelService/DeactivationCancelService");
 	}
-
+	
+	@Bean
+	public PharmacySaleCancelService pharmacySaleCancelService() {
+		return createSoapClient(PharmacySaleCancelService.class, rsdUrl+"/PharmacySaleCancelService/PharmacySaleCancelService");
+	}
+	
 	@SuppressWarnings("unchecked")
 	private <T> T createSoapClient(Class<T> serviceClass, String serviceUrl) {
 		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
@@ -81,4 +73,5 @@ public class SoapClientConfig {
 		httpConduit.setAuthSupplier(new DefaultBasicAuthSupplier());
 		return client;
 	}
+
 }

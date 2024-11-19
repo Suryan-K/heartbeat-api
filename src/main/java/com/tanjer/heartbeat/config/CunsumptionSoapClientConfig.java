@@ -12,14 +12,10 @@ import com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice.Cons
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationcancelservice.DeactivationCancelService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationservice.DeactivationService;
-import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchService;
-import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptService;
-import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationService.DeactivationService;
-import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleCancelService.PharmacySaleCancelService;
-import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleService;
+
 
 @Configuration
-public class SoapClientConfig {
+public class CunsumptionSoapClientConfig {
 
 	@Value("${integration.rsd.url}")
 	private String rsdUrl;
@@ -30,34 +26,19 @@ public class SoapClientConfig {
 	@Value("${integration.rsd.password}")
 	private String rsdPassword;
 
-	@Bean
-	protected PharmacySaleService pharmacySaleService() {
-		return createSoapClient(PharmacySaleService.class, rsdUrl + "/PharmacySaleService/PharmacySaleService");
-	}
 
 	@Bean
-	protected AcceptService acceptService() {
-		return createSoapClient(AcceptService.class, rsdUrl + "/AcceptService/AcceptService");
-	}
-
-	@Bean
-	protected AcceptDispatchService acceptDispatchService() {
-		return createSoapClient(AcceptDispatchService.class, rsdUrl + "/AcceptDispatchService/AcceptDispatchService");
-	}
-
-	@Bean
-	protected ConsumeService consumeService() {
+	public ConsumeService consumeService() {
 		return createSoapClient(ConsumeService.class, rsdUrl+"/ConsumeService/ConsumeService");
 	}
 	
 	@Bean
-<<<<<<< HEAD
 	public ConsumeCancelService consumeCancelService() {
 		return createSoapClient(ConsumeCancelService.class, rsdUrl+"/ConsumeCancelService/ConsumeCancelService");
 	}
 	
 	@Bean
-	public DeactivationService deactivationService() {
+	public DeactivationService cunsumptionDeactivationService() {
 		return createSoapClient(DeactivationService.class, rsdUrl+"/DeactivationService/DeactivationService");
 	}
 	
@@ -65,16 +46,7 @@ public class SoapClientConfig {
 	public DeactivationCancelService deactivationCancelService() {
 		return createSoapClient(DeactivationCancelService.class, rsdUrl+"/DeactivationCancelService/DeactivationCancelService");
 	}
-=======
-	protected PharmacySaleCancelService phamacySaleCancelService() {
-		return createSoapClient(PharmacySaleCancelService.class, rsdUrl+"/PharmacySaleCancelService/PharmacySaleCancelService");
-	}
 	
-	@Bean
-	protected DeactivationService deactivationSaleService() {
-		return createSoapClient(DeactivationService.class, rsdUrl+"/DeactivationService/DeactivationService");
-	}
->>>>>>> master
 
 	@SuppressWarnings("unchecked")
 	private <T> T createSoapClient(Class<T> serviceClass, String serviceUrl) {

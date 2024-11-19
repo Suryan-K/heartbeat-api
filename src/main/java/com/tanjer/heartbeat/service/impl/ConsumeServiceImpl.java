@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
 import com.tanjer.heartbeat.requestDTO.DeactivationCancelServiceRequestDTO;
 import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
 import com.tanjer.heartbeat.service.ConsumeSaleService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice.ConsumeCancelServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumecancelservice.HConsumeCancelService;
@@ -37,14 +37,14 @@ public class ConsumeServiceImpl implements ConsumeSaleService{
 	private HDeactivationCancelService hDeactivationCancelService;
 	
 	@Override
-	public ConsumeServiceResponse consumeServiceRes(ConsumeServiceRequestDTO dto) {
+	public ConsumeServiceResponse consumeServiceRes(ListProductModelDTO dto) {
 		logger.info("consumeServiceRes Processing started");
 		ConsumeServiceResponse response = hConsumeService.consumeServiceThirdParyCall(dto);
 		return response;
 	}
 	
 	@Override
-	public ConsumeCancelServiceResponse consumeCancelServiceRes(ConsumeCancelServiceRequestDTO dto) {
+	public ConsumeCancelServiceResponse consumeCancelServiceRes(ListProductModelDTO dto) {
 		logger.info("consumeCancelServiceRes Processing started");
 		ConsumeCancelServiceResponse response = hConsumeCancelService.consumeCancelServiceThirdParyCall(dto);
 		return response;

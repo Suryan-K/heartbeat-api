@@ -12,12 +12,11 @@ import org.springframework.stereotype.Component;
 
 import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
 import com.tanjer.heartbeat.utils.CommonUtils;
-import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.HConsumeService;
 
 @Component
 public class HDeactivationService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HConsumeService.class);
+	private static final Logger logger = LoggerFactory.getLogger(HDeactivationService.class);
 	
 	@Autowired
 	private DeactivationService deactivationService;
