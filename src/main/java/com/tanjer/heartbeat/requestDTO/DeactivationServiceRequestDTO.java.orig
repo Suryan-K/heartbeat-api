@@ -1,21 +1,34 @@
 package com.tanjer.heartbeat.requestDTO;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2b046cb0b68e65dd4f534c906cf262b0bcb910b1
 import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+<<<<<<< HEAD
 import lombok.NoArgsConstructor;
+=======
+>>>>>>> 2b046cb0b68e65dd4f534c906cf262b0bcb910b1
 import lombok.Setter;
 
 @Getter
 @Setter
+<<<<<<< HEAD
 @NoArgsConstructor
+=======
+>>>>>>> 2b046cb0b68e65dd4f534c906cf262b0bcb910b1
 @AllArgsConstructor
 public class DeactivationServiceRequestDTO {
 	
 	private String dr;
 	private String explanation;
+<<<<<<< HEAD
+	private List<ProductSample> productlist;
+=======
 	private List<ProductModel> productlist;
+>>>>>>> 2b046cb0b68e65dd4f534c906cf262b0bcb910b1
 
 }

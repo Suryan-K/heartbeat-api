@@ -6,7 +6,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
+import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.DeactivationCancelServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
+=======
 import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
+>>>>>>> 2b046cb0b68e65dd4f534c906cf262b0bcb910b1
 import com.tanjer.heartbeat.service.ConsumeSaleService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationcancelservice.DeactivationCancelServiceResponse;
@@ -20,6 +26,7 @@ public class ConsumptionController {
 	@Autowired
 	private ConsumeSaleService consumeService;
 	
+<<<<<<< HEAD
 	@PostMapping("consume")
 	public ConsumeServiceResponse request(@RequestBody ConsumeServiceRequestDTO request){
 		return consumeService.consumeServiceRes(request);
@@ -33,6 +40,13 @@ public class ConsumptionController {
 	@PostMapping("deactivation/cancel")
 	public DeactivationCancelServiceResponse request(@RequestBody DeactivationCancelServiceRequestDTO request){
 		return consumeService.deactivateCancelServiceRes(request);
+=======
+	@PostMapping("/consumeService")
+	public ConsumeServiceResponse request(@RequestBody ListProductModelDTO request){
+		ConsumeServiceResponse responseBody = consumeService.consumeServiceRes(request);
+		
+		return responseBody;
+>>>>>>> 2b046cb0b68e65dd4f534c906cf262b0bcb910b1
 	}
 
 }

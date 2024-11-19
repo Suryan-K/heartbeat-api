@@ -1,0 +1,100 @@
+package com.tanjer.heartbeat.service.impl;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+<<<<<<< HEAD
+import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.DeactivationCancelServiceRequestDTO;
+import com.tanjer.heartbeat.requestDTO.DeactivationServiceRequestDTO;
+=======
+import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
+>>>>>>> 2b046cb0b68e65dd4f534c906cf262b0bcb910b1
+import com.tanjer.heartbeat.service.ConsumeSaleService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.HConsumeService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationcancelservice.DeactivationCancelServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationcancelservice.HDeactivationCancelService;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationservice.DeactivationServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.consumption.deactivationservice.HDeactivationService;
+
+
+@Service
+public class ConsumeServiceImpl implements ConsumeSaleService{
+	
+	private static final Logger logger = LoggerFactory.getLogger(ConsumeServiceImpl.class);
+	
+	@Autowired
+	private HConsumeService hConsumeService;
+	
+	@Autowired
+	private HDeactivationService hDeactivationService;
+	
+	@Autowired
+	private HDeactivationCancelService hDeactivationCancelService;
+	
+	@Override
+<<<<<<< HEAD
+	public ConsumeServiceResponse consumeServiceRes(ConsumeServiceRequestDTO dto) {
+		logger.info("consumeServiceRes Processing started");
+		ConsumeServiceResponse response = hConsumeService.consumeServiceThirdParyCall(dto);
+		return response;
+	}
+	
+	@Override
+	public DeactivationServiceResponse deactivateServiceRes(DeactivationServiceRequestDTO dto) {
+		logger.info("deactivateServiceRes Processing started");
+		DeactivationServiceResponse response = hDeactivationService.deactivationServiceThirdParyCall(dto);
+		return response;
+=======
+	public ConsumeServiceResponse consumeServiceRes(ListProductModelDTO dto) {
+
+		ConsumeServiceRequest request = mapToSoapRequest(dto);
+		ConsumeServiceResponse response = null;
+		try {
+			response =  consumeService.notifyConsume(request);
+		} catch (ServiceError e) {
+			e.printStackTrace();
+		}
+			return response;
+	}
+	
+	private ConsumeServiceRequest mapToSoapRequest(ListProductModelDTO dto) {
+		ConsumeServiceRequest request = new ConsumeServiceRequest();
+		ConsumeServiceRequest.PRODUCTLIST productlist = new ConsumeServiceRequest.PRODUCTLIST();
+		List<Product> products = dto.getProductlist().stream().map(productDto -> {
+			Product product = new Product();
+			product.setGTIN(productDto.getGtin());
+			product.setSN(productDto.getSn());
+			product.setBN(productDto.getBn());
+			logger.error("Gtin" + productDto.getGtin());
+			logger.error("SN"+ productDto.getSn());
+			logger.error("BN"+ productDto.getBn());
+			try {
+				if (productDto.getXd() == null || productDto.getXd().isEmpty()) {
+					throw new RuntimeException("Date input is null or empty");
+				}
+				XMLGregorianCalendar xmlDate = convertToXMLGregorianCalendar(productDto.getXd());
+				product.setXD(xmlDate);
+			} catch (Exception e) {
+				throw new RuntimeException("Error converting product expiry date", e);
+			}
+			return product;
+		}).collect(Collectors.toList());
+		productlist.getPRODUCT().addAll(products);
+		request.setPRODUCTLIST(productlist);
+
+		return request;
+		
+>>>>>>> 2b046cb0b68e65dd4f534c906cf262b0bcb910b1
+	}
+
+	@Override
+	public DeactivationCancelServiceResponse deactivateCancelServiceRes(DeactivationCancelServiceRequestDTO dto) {
+		logger.info("deactivateCancelServiceRes Processing started");
+		DeactivationCancelServiceResponse response = hDeactivationCancelService.deactivationCancelServiceThirdParyCall(dto);
+		return response;
+	}
+}

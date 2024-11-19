@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tanjer.heartbeat.requestDTO.ListProductModelDTO;
+import com.tanjer.heartbeat.requestDTO.ConsumeServiceRequestDTO;
 import com.tanjer.heartbeat.service.ConsumeSaleService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeService;
 import com.tanjer.heartbeat.wsgenfile.test.consumption.consumeservice.ConsumeServiceRequest;
@@ -33,7 +33,7 @@ public class ConsumeServiceImpl implements ConsumeSaleService{
 	private ConsumeService consumeService;
 	
 	@Override
-	public ConsumeServiceResponse consumeServiceRes(ListProductModelDTO dto) {
+	public ConsumeServiceResponse consumeServiceRes(ConsumeServiceRequestDTO dto) {
 
 		ConsumeServiceRequest request = mapToSoapRequest(dto);
 		ConsumeServiceResponse response = null;
@@ -45,30 +45,12 @@ public class ConsumeServiceImpl implements ConsumeSaleService{
 			return response;
 	}
 	
-	private ConsumeServiceRequest mapToSoapRequest(ListProductModelDTO dto) {
-		ConsumeServiceRequest request = new ConsumeServiceRequest();
-		ConsumeServiceRequest.PRODUCTLIST productlist = new ConsumeServiceRequest.PRODUCTLIST();
-		List<Product> products = dto.getProductlist().stream().map(productDto -> {
-			Product product = new Product();
-			product.setGTIN(productDto.getGtin());
-			product.setSN(productDto.getSn());
-			product.setBN(productDto.getBn());
-			logger.error("Gtin" + productDto.getGtin());
-			logger.error("SN"+ productDto.getSn());
-			logger.error("BN"+ productDto.getBn());
-			try {
-				if (productDto.getXd() == null || productDto.getXd().isEmpty()) {
-					throw new RuntimeException("Date input is null or empty");
-				}
-				XMLGregorianCalendar xmlDate = convertToXMLGregorianCalendar(productDto.getXd());
-				product.setXD(xmlDate);
-			} catch (Exception e) {
-				throw new RuntimeException("Error converting product expiry date", e);
-			}
-			return product;
-		}).collect(Collectors.toList());
-		productlist.getPRODUCT().addAll(products);
-		request.setPRODUCTLIST(productlist);
+	@Override
+	public DeactivationServiceResponse deactivateServiceRes(DeactivationServiceRequestDTO dto) {
+		logger.info("deactivateServiceRes Processing started");
+		DeactivationServiceResponse response = hDeactivationService.deactivationServiceThirdParyCall(dto);
+		return response;
+	}
 
 		return request;
 		
