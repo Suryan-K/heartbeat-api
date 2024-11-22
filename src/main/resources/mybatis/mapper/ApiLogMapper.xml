@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanjer.heartbeat.mapper.ApiLogMapper">
+
+    <!-- Insert query for logging API calls -->
+    <insert id="insertApiLog" parameterType="com.tanjer.heartbeat.model.ApiLog">
+        INSERT INTO api_logs (api_name, request_json, request_time, status,
+        response_json, response_time, httpStatus)
+        VALUES (#{apiName}, #{requestJson}, #{requestTime}, #{status},
+        #{responseJson}, #{responseTime}, #{httpStatus})
+    </insert>
+
+</mapper>

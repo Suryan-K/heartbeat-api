@@ -47,6 +47,12 @@ public class PharmacyServiceImpl implements PharmacyService {
 		PharmacySaleServiceResponse responce = pharmacyService.pharmacyServiceThirdParyCall(dto);
 		return responce;
 	}
+	
+	@Override
+	public PharmacySaleCancelServiceResponse getSaleCancelService(PharmacySaleCancelServiceRequestDTO request) {
+		PharmacySaleCancelServiceResponse response = pharmacyCancelSaleService.pharmacySaleCancelServiceThirdPartyCall(request);
+		return response;
+	}
 
 	@Override
 	public AcceptServiceResponse getAcceptService(AcceptServiceRequestDto dto) {
@@ -59,20 +65,11 @@ public class PharmacyServiceImpl implements PharmacyService {
 		AcceptDispatchServiceResponse response = acceptDispatchService.pharmacyAcceptDispatchServiceThirdParyCall(dispatchNotificationId);
 		return response;
 	}
-
-	@Override
-	public PharmacySaleCancelServiceResponse getSaleCancelService(PharmacySaleCancelServiceRequestDTO request) {
-		PharmacySaleCancelServiceResponse response = pharmacyCancelSaleService.pharmacySaleCancelServiceThirdPartyCall(request);
-		return response;
-	}
-
+	
 	@Override
 	public DeactivationServiceResponse getDeactivationService(DeactivationServiceRequestDTO request) {
 		DeactivationServiceResponse response = deactivationSaleService.deactivationServiceTirdPartyCall(request);
 		return response;
 	}
-	
-	
-
 	
 }

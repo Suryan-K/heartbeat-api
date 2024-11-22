@@ -11,16 +11,31 @@ app:
 ---
 spring:
   profiles: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/sakila  
+    username: root  
+    password: Tanjer@123 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10  
 
 server:
   port: 8080
   #address: 127.0.0.1
+  
+mybatis:
+  # Location of MyBatis mapper XML files
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+  # Package for MyBatis type aliases (Java objects)
+  type-aliases-package: com.tanjer.heartbeat.model
+
+  configuration:
+    # To convert underscores to camelCase automatically (optional)
+    map-underscore-to-camel-case: true
 
 # Database settings for local environment
-datasource:
-  #url: jdbc:mysql://localhost:3306/local_db
-  #username: root
-  #password: rootpassword
+
 integration:
    rsd:
       url: https://tandttest.sfda.gov.sa/ws

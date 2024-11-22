@@ -41,5 +41,6 @@ public class ConsumptionController {
 	public DeactivationCancelServiceResponse customtiondeactivationCancelService(@RequestBody ListProductModelDTO request){
 		return consumeService.deactivateCancelServiceRes(request);
 	}
-
+	
+	
 }

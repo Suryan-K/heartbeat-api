@@ -17,12 +17,13 @@ import com.tanjer.heartbeat.requestDTO.PharmacySaleServiceRequestDTO;
 import com.tanjer.heartbeat.service.PharmacyService;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptDispatch.AcceptDispatchServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.acceptService.AcceptServiceResponse;
+import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationCancelService.DeactivationCancelServiceRequest;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.deactivationService.DeactivationServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleCancelService.PharmacySaleCancelServiceResponse;
 import com.tanjer.heartbeat.wsgenfile.test.pharmacy.saleService.PharmacySaleServiceResponse;
 
 @RestController
-@RequestMapping("pharmacy/service")
+@RequestMapping("rsd/pharmacy/service")
 public class PharmacyController {
 
 	@Autowired
@@ -31,6 +32,12 @@ public class PharmacyController {
 	@PostMapping("sale")
 	public PharmacySaleServiceResponse saleService(@RequestBody final PharmacySaleServiceRequestDTO request) {
 		return pharmacyService.pharmacyServiceRes(request);
+	}
+	
+	@PostMapping("sale/cancel")
+	public PharmacySaleCancelServiceResponse saleCancelServiceResponse(
+			@RequestBody PharmacySaleCancelServiceRequestDTO request) {
+		return pharmacyService.getSaleCancelService(request);
 	}
 
 	@PostMapping("accept")
@@ -43,14 +50,17 @@ public class PharmacyController {
 			@PathVariable(required = true) final String dispatchNotificationId) {
 		return pharmacyService.getAcceptDispatchService(dispatchNotificationId);
 	}
-	
-	@PostMapping("sale/cancel")
-	public PharmacySaleCancelServiceResponse saleCancelServiceResponse(@RequestBody PharmacySaleCancelServiceRequestDTO request) {
-		return pharmacyService.getSaleCancelService(request);
-	}
-	
+
 	@PostMapping("/deactivation")
 	public DeactivationServiceResponse deactivationServiceResponse(@RequestBody DeactivationServiceRequestDTO request) {
 		return pharmacyService.getDeactivationService(request);
 	}
+
+	/*
+	 * @PostMapping("sale/cancel") public DeactivationCancelServiceRequest
+	 * deactivationCancelService(
+	 * 
+	 * @RequestBody PharmacySaleCancelServiceRequestDTO request) { return
+	 * pharmacyService.getSaleCancelService(request); }
+	 */
 }
